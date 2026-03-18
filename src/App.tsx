@@ -134,7 +134,9 @@ function App() {
             scale={1.05} 
             transitionSpeedEnter={400}
             transitionSpeedExit={400}
-            gyroscope={true}
+            gyroscope={false}
+            trackOnWindow={false}      
+            tiltReverse={false}     
           >
             <div className="project-card">
               <div className="project-header">
