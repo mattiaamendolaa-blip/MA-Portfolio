@@ -4,7 +4,7 @@ import './App.scss';
 
 import { 
   FaReact, FaAngular, FaHtml5, FaNodeJs, FaNetworkWired, 
-  FaLinkedin, FaGithub, FaEnvelope, FaBars 
+  FaLinkedin, FaGithub, FaEnvelope, FaBars, FaTimes 
 } from 'react-icons/fa';
 import { 
   SiTypescript, SiJavascript, SiSass, SiTailwindcss, 
@@ -22,6 +22,7 @@ function App() {
     const enterTimer = window.setTimeout(() => {
       document.body.classList.remove('page-enter');
     }, 1200);
+
     const handleMouseMove = (e: MouseEvent) => {
       document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
       document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
@@ -37,10 +38,11 @@ function App() {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
-        setIsMenuOpen(false); // Chiude il menu se si torna in cima
+        setIsMenuOpen(false);
       }
     };
-    const observerOptions = { threshold: 0.4 }; // La sezione è attiva quando ne vedi il 40%
+
+    const observerOptions = { threshold: 0.4 };
     const spyObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -77,13 +79,8 @@ function App() {
 
   return (
     <>
-      {/* 1. Progress Bar */}
-      <div 
-        className="scroll-progress-bar" 
-        style={{ width: `${scrollProgress}%` }}
-      ></div>
+      <div className="scroll-progress-bar" style={{ width: `${scrollProgress}%` }}></div>
 
-      {/* 2. Spotlight & Aurora */}
       <div className="spotlight-overlay"></div>
       <div className="aurora-bg">
         <div className="aurora-blob blob-1"></div>
@@ -91,15 +88,15 @@ function App() {
         <div className="aurora-blob blob-3"></div>
       </div>
 
-      {/* 3. Navbar con ScrollSpy e Hamburger Menu Mobile */}
+      {isScrolled && isMenuOpen && (
+        <div className="menu-overlay" onClick={() => setIsMenuOpen(false)}></div>
+      )}
+
       <nav className={`floating-nav ${isScrolled ? 'scrolled' : ''}`}>
-        
-        {/* Pulsante Menu Mobile */}
         <div className="nav-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <FaBars />
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
         </div>
 
-        {/* Link di navigazione */}
         <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
           <a 
             href="#hero" 
