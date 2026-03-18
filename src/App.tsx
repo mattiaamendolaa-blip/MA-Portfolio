@@ -100,8 +100,10 @@ function App() {
             scale={1.05} 
             transitionSpeedEnter={400}
             transitionSpeedExit={400}
-            gyroscope={true}
-          >
+            gyroscope={false}
+            trackOnWindow={false}      
+            tiltReverse={false}       
+            className="tilt-wrapper">
             <div className="project-card">
               <div className="project-header">
                 <span>App</span>

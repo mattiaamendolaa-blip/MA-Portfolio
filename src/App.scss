@@ -167,7 +167,7 @@ body {
   font-size: 11px;
   color: #24b9b9;
   font-family: 'JetBrains Mono', monospace;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   width: fit-content;
 }
 
@@ -262,21 +262,13 @@ body {
     cursor: default;
   }
 }
-
-/* =========================================
-   WRAPPER PER TILT (Novità!)
-========================================= */
 .tilt-wrapper {
   border-radius: 20px;
   outline: none !important;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
-  margin-bottom: 16px; /* Spostato qui dalla card originale */
+  margin-bottom: 16px; 
 }
-
-/* =========================================
-   PROJECT CARD AGGIORNATA
-========================================= */
 .project-card {
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(12px);
@@ -284,14 +276,17 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 20px;
   padding: 18px;
-  height: 100%; /* Altezza piena necessaria per il Tilt */
+  height: 100%; 
   text-align: left;
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  &:active {
+    transform: scale(0.97); 
+    transition: transform 0.1s ease;
+  }
   
   &:hover {
     border-color: rgba(36, 185, 185, 0.35);
     background: rgba(255, 255, 255, 0.035);
-    /* L'ombra verde acqua per l'effetto bagliore 3D */
     box-shadow: 0 30px 100px -20px rgba(36, 185, 185, 0.18);
   }
   
@@ -356,7 +351,7 @@ body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     color: #888;
-  margin-bottom: 24px;
+    margin-bottom: 16px;
     transition: color 0.25s ease;
   }
   .dot {
