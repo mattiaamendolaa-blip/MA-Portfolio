@@ -1,0 +1,56 @@
+.floating-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  // Fade ai bordi per entrata/uscita morbida delle particelle
+  mask-image: linear-gradient(
+    to top,
+    transparent 0%,
+    rgba(0,0,0,0.6) 6%,
+    black 15%,
+    black 85%,
+    rgba(0,0,0,0.6) 94%,
+    transparent 100%
+  );
+}
+
+.fp-dot {
+  position: absolute;
+  bottom: -8px;
+  opacity: 0.28;
+  animation: fp-rise linear infinite;
+  will-change: transform;
+}
+
+// Particelle extra solo su desktop
+.fp-desktop {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .fp-desktop {
+    display: block;
+  }
+}
+
+@keyframes fp-rise {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.28;
+  }
+  30%  { transform: translateY(-30vh)  translateX(12px)  rotate(60deg);  }
+  60%  { transform: translateY(-60vh)  translateX(-8px)  rotate(120deg); }
+  90%  { opacity: 0.18; }
+  100% {
+    transform: translateY(-105vh) translateX(6px) rotate(200deg);
+    opacity: 0;
+  }
+}
