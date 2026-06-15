@@ -211,7 +211,7 @@ function Core3DScene({ onSystemOnline }: { onSystemOnline: () => void }) {
       <Environment preset="studio" />
       <SoftShadows size={2.5} focus={0.5} samples={18} />
       
-      <Grid position={[0, -2.5, 0]} args={[40, 40]} sectionColor="#1a1b1e" cellColor="#111112" sectionWidth={1.5} fadeDistance={30} />
+      <Grid position={[0, -2.5, 0]} args={[40, 40]} sectionColor="#1a1b1e" cellColor="#111112" sectionThickness={1.5} fadeDistance={30} />
 
       <ambientLight intensity={0.2} />
       <directionalLight 
