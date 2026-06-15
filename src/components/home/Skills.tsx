@@ -83,19 +83,21 @@ export function Skills() {
           </h2>
         </div>
         
+        {/* MODIFICATO SOLO: md:flex md:flex-nowrap -> xl:flex xl:flex-nowrap */}
         <motion.div 
           onMouseMove={(e) => mouseX.set(e.clientX)}
           onMouseLeave={() => mouseX.set(Infinity)}
-          className="mx-auto hidden w-fit max-w-full h-[84px] items-end justify-start gap-4 rounded-[2rem] border border-neutral-200 bg-white/[0.72] px-6 pb-4 shadow-[0_20px_40px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.85)] backdrop-blur-2xl transition-colors duration-500 dark:border-white/[0.12] dark:bg-[#0f172a]/[0.42] dark:shadow-[0_20px_60px_rgba(2,6,23,0.28),inset_0_1px_0_rgba(255,255,255,0.04)] md:flex md:flex-nowrap overflow-visible [&::-webkit-scrollbar]:hidden relative z-10"
+          className="mx-auto hidden w-fit max-w-full h-[84px] items-end justify-start gap-4 rounded-[2rem] border border-neutral-200 bg-white/[0.72] px-6 pb-4 shadow-[0_20px_40px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.85)] backdrop-blur-2xl transition-colors duration-500 dark:border-white/[0.12] dark:bg-[#0f172a]/[0.42] dark:shadow-[0_20px_60px_rgba(2,6,23,0.28),inset_0_1px_0_rgba(255,255,255,0.04)] xl:flex xl:flex-nowrap overflow-visible [&::-webkit-scrollbar]:hidden relative z-10"
         >
           {skills.map((skill) => (
             <DesktopDockIcon key={skill.name} skill={skill} mouseX={mouseX} />
           ))}
         </motion.div>
 
+        {/* MODIFICATO SOLO: md:hidden -> xl:hidden */}
         <div
           ref={scrollRef}
-          className="w-full overflow-x-auto pb-4 scroll-smooth [&::-webkit-scrollbar]:hidden md:hidden"
+          className="w-full overflow-x-auto pb-4 scroll-smooth [&::-webkit-scrollbar]:hidden xl:hidden"
         >
           <div className="flex w-max gap-4 px-6">
             {[...skills, ...skills].map((skill, index) => {

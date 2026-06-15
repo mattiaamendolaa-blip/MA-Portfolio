@@ -1,13 +1,13 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@teispace/next-themes";
 import { AnimatePresence, motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
-  
+
   const mounted = useSyncExternalStore(
     () => () => undefined,
     () => true,
@@ -23,13 +23,10 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      role="switch"
-      aria-checked={isDark}
       aria-label="Cambia tema visivo"
       onClick={toggleTheme}
       className="relative inline-flex h-10 w-[4.5rem] shrink-0 cursor-pointer items-center rounded-full border border-neutral-200/50 bg-white/40 p-1 text-neutral-700 shadow-[0_10px_24px_rgba(15,23,42,0.04),inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-xl transition-all duration-300 hover:bg-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/70 dark:border-white/10 dark:bg-neutral-900/40 dark:text-neutral-300 dark:shadow-[0_10px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.05)] dark:hover:bg-neutral-900/60"
     >
-      
       <motion.span
         className="absolute left-1 top-1 flex h-8 w-8 items-center justify-center rounded-full border border-black/[0.04] bg-white shadow-[0_4px_12px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,1)] dark:border-white/10 dark:bg-neutral-950 dark:shadow-[0_4px_12px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]"
         animate={{ x: isDark ? 32 : 0 }}
@@ -54,7 +51,7 @@ export function ThemeToggle() {
       </motion.span>
 
       <span className="sr-only">
-        {isDark ? "Interruttore tema impostato su scuro" : "Interruttore tema impostato su chiaro"}
+        {isDark ? "Tema attuale: scuro. Clicca per cambiare." : "Tema attuale: chiaro. Clicca per cambiare."}
       </span>
     </button>
   );
