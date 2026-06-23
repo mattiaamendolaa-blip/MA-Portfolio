@@ -27,12 +27,20 @@ const blobs = [
     y: [0, -34, 18, 0],
     scale: [1, 1.05, 0.98, 1],
   },
+  {
+    className:
+      "right-[10%] bottom-[20%] h-[16rem] w-[16rem] bg-indigo-200/30 dark:bg-indigo-400/8 md:h-[20rem] md:w-[20rem]",
+    duration: 24,
+    x: [0, -30, 20, 0],
+    y: [0, 20, -30, 0],
+    scale: [1, 1.04, 0.97, 1],
+  },
 ];
 
 export function MeshBackground() {
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 overflow-hidden">
-      <div className="absolute inset-0 bg-neutral-50 transition-colors duration-500 dark:bg-[#0a0d16]" />
+      <div className="absolute inset-0 bg-[hsl(210_20%_98%)] transition-colors duration-500 dark:bg-[hsl(226_63%_6%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(15,23,42,0.03),transparent_38%),linear-gradient(180deg,rgba(255,255,255,0.82),rgba(248,250,252,0.98))] transition-colors duration-500 dark:bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.025),transparent_38%),linear-gradient(180deg,rgba(10,13,22,0.78),rgba(10,13,22,0.97))]" />
       {blobs.map((blob, index) => (
         <motion.div

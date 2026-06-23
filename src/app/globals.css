@@ -5,11 +5,23 @@
   :root {
     --background: 210 20% 98%;
     --foreground: 222 47% 11%;
+    --accent: 160 84% 39%;
+    --accent-foreground: 160 84% 16%;
+    --secondary: 217 91% 60%;
+    --muted: 220 9% 46%;
+    --muted-foreground: 220 9% 36%;
+    --shadow-base: 222 47% 11%;
   }
 
   .dark {
     --background: 226 63% 6%;
     --foreground: 210 40% 98%;
+    --accent: 160 60% 55%;
+    --accent-foreground: 160 60% 90%;
+    --secondary: 217 91% 70%;
+    --muted: 218 11% 55%;
+    --muted-foreground: 218 11% 65%;
+    --shadow-base: 0 0% 0%;
   }
 
   * {
@@ -38,8 +50,22 @@
   }
 
   ::selection {
-    background: rgba(52, 211, 153, 0.2);
+    background: rgba(52, 211, 153, 0.25);
+    color: #1a2e35;
+  }
+
+  .dark ::selection {
+    background: rgba(52, 211, 153, 0.3);
     color: #eef6ff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 

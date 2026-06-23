@@ -3,8 +3,6 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { LanguageProvider } from "@/Context/LanguageContext";
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
-import { useTheme } from "@teispace/next-themes";
-
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -17,6 +15,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mattia-amendola.dev"),
   title: "Mattia Amendola - Full-Stack Developer",
   description:
     "Portfolio di Mattia Amendola - Full-Stack Developer e Software Architect",
@@ -67,10 +66,15 @@ export default function RootLayout({
           inter.className,
           inter.variable,
           spaceGrotesk.variable,
-          "min-h-screen bg-neutral-50 text-neutral-900 antialiased transition-colors duration-500 dark:bg-neutral-950 dark:text-neutral-50",
-          "selection:bg-emerald-500/30 selection:text-emerald-200",
+          "min-h-screen bg-[hsl(210_20%_98%)] text-neutral-900 antialiased transition-colors duration-500 dark:bg-[hsl(226_63%_6%)] dark:text-neutral-50",
         )}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-emerald-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg focus:outline-none"
+        >
+          Vai al contenuto principale
+        </a>
         <ThemeProvider>
           <LanguageProvider>
             {children}

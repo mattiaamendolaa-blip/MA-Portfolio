@@ -75,7 +75,7 @@ export function Skills() {
   }, []);
 
   return (
-    <section id="skills" className="overflow-hidden py-20 md:py-28 relative">
+    <section id="skills" className="overflow-hidden py-20 md:py-28 relative scroll-mt-24">
       <div className="mx-auto max-w-8xl px-4 relative">
         <div className="mx-auto mb-10 max-w-2xl text-center">
           <h2 className="mt-3 font-[family:var(--font-display)] text-3xl font-bold tracking-[-0.04em] text-neutral-950 dark:text-white md:text-4xl">
@@ -87,7 +87,7 @@ export function Skills() {
         <motion.div 
           onMouseMove={(e) => mouseX.set(e.clientX)}
           onMouseLeave={() => mouseX.set(Infinity)}
-          className="mx-auto hidden w-fit max-w-full h-[84px] items-end justify-start gap-4 rounded-[2rem] border border-neutral-200 bg-white/[0.72] px-6 pb-4 shadow-[0_20px_40px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.85)] backdrop-blur-2xl transition-colors duration-500 dark:border-white/[0.12] dark:bg-[#0f172a]/[0.42] dark:shadow-[0_20px_60px_rgba(2,6,23,0.28),inset_0_1px_0_rgba(255,255,255,0.04)] xl:flex xl:flex-nowrap overflow-visible [&::-webkit-scrollbar]:hidden relative z-10"
+          className="mx-auto hidden w-fit max-w-full h-[84px] items-end justify-start gap-4 rounded-[2rem] border border-white/[0.3] bg-white/[0.5] px-6 pb-4 shadow-[0_20px_40px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,0.85),inset_0_-1px_0_rgba(255,255,255,0.15)] backdrop-blur-[36px] backdrop-saturate-[1.7] transition-all duration-500 dark:border-white/[0.1] dark:bg-white/[0.04] dark:shadow-[0_20px_60px_rgba(2,6,23,0.28),inset_0_1px_0_rgba(255,255,255,0.06),inset_0_-1px_0_rgba(255,255,255,0.02)] dark:backdrop-saturate-[1.3] xl:flex xl:flex-nowrap overflow-visible [&::-webkit-scrollbar]:hidden relative z-10"
         >
           {skills.map((skill) => (
             <DesktopDockIcon key={skill.name} skill={skill} mouseX={mouseX} />
@@ -104,10 +104,10 @@ export function Skills() {
               const Icon = skill.icon;
               return (
                 <div key={`${skill.name}-${index}`} className="flex min-w-[70px] flex-col items-center gap-2">
-                  <div className="rounded-2xl border border-neutral-200 bg-white p-3 shadow-md shadow-black/5 dark:border-white/10 dark:bg-slate-900">
+                  <div className="rounded-2xl border border-white/[0.3] bg-white/[0.6] p-3 shadow-[0_4px_16px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-xl dark:border-white/[0.1] dark:bg-white/[0.06] dark:shadow-[0_4px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)]">
                     <Icon className={cn("h-8 w-8 transition-colors", skill.color)} />
                   </div>
-                  <span className="text-center text-[10px] font-medium text-neutral-600 dark:text-neutral-400">
+                  <span className="text-center text-[10px] font-medium text-neutral-700 dark:text-neutral-300">
                     {skill.name}
                   </span>
                 </div>
@@ -121,22 +121,26 @@ export function Skills() {
   );
 }
 
+const springConfig = { mass: 0.05, stiffness: 300, damping: 20 };
+
 function DesktopDockIcon({ skill, mouseX }: { skill: Skill; mouseX: any }) {
   const ref = useRef<HTMLDivElement>(null);
   const Icon = skill.icon;
 
   const distance = useTransform(mouseX, (val: number) => {
-    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+    const el = ref.current;
+    if (!el) return Infinity;
+    const bounds = el.getBoundingClientRect();
     return val - bounds.x - bounds.width / 2;
   });
 
-  const sizeTransform = useTransform(distance, [-140, 0, 140], [52, 82, 52]);
-  const iconSizeTransform = useTransform(distance, [-140, 0, 140], [26, 44, 26]);
-  const yTransform = useTransform(distance, [-140, 0, 140], [0, -12, 0]);
+  const sizeTransform = useTransform(distance, [-160, 0, 160], [52, 82, 52]);
+  const iconSizeTransform = useTransform(distance, [-160, 0, 160], [26, 44, 26]);
+  const yTransform = useTransform(distance, [-160, 0, 160], [0, -12, 0]);
 
-  const size = useSpring(sizeTransform, { mass: 0.1, stiffness: 150, damping: 15 });
-  const iconSize = useSpring(iconSizeTransform, { mass: 0.1, stiffness: 150, damping: 15 });
-  const y = useSpring(yTransform, { mass: 0.1, stiffness: 150, damping: 15 });
+  const size = useSpring(sizeTransform, springConfig);
+  const iconSize = useSpring(iconSizeTransform, springConfig);
+  const y = useSpring(yTransform, springConfig);
 
   return (
     <div 
@@ -144,21 +148,21 @@ function DesktopDockIcon({ skill, mouseX }: { skill: Skill; mouseX: any }) {
       className="group relative flex flex-col items-center justify-end shrink-0 overflow-visible"
     >
       <div className="pointer-events-none absolute -top-12 z-20 opacity-0 transition-all duration-300 ease-out group-hover:-translate-y-2 group-hover:opacity-100">
-        <span className="whitespace-nowrap rounded-xl border border-white/70 bg-white/[0.92] px-3 py-1.5 text-xs font-semibold text-neutral-900 shadow-lg shadow-black/5 backdrop-blur-md dark:border-white/10 dark:bg-[#111827]/[0.92] dark:text-white dark:shadow-xl">
+        <span className="whitespace-nowrap rounded-xl border border-white/[0.4] bg-white/[0.75] px-3 py-1.5 text-xs font-semibold text-neutral-900 shadow-[0_8px_24px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-2xl backdrop-saturate-[1.6] dark:border-white/[0.12] dark:bg-white/[0.08] dark:text-white dark:shadow-[0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)]">
           {skill.name}
         </span>
       </div>
       
-      <motion.div 
-        style={{ width: size, height: size, y }}
-        className="flex items-center justify-center rounded-2xl border border-neutral-200 bg-white shadow-sm dark:border-white/10 dark:bg-slate-900"
+      <motion.div
+        style={{ width: size, height: size, y, willChange: "width, height, transform" }}
+        className="flex items-center justify-center rounded-2xl border border-white/[0.35] bg-white/[0.65] shadow-[0_4px_16px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl dark:border-white/[0.1] dark:bg-white/[0.06] dark:shadow-[0_4px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.06)]"
       >
-        <motion.div style={{ width: iconSize, height: iconSize }}>
-          <Icon 
+        <motion.div style={{ width: iconSize, height: iconSize, willChange: "width, height" }}>
+          <Icon
             className={cn(
-              "w-full h-full drop-shadow-sm dark:drop-shadow-md transition-colors duration-300", 
+              "w-full h-full drop-shadow-sm dark:drop-shadow-md",
               skill.color
-            )} 
+            )}
           />
         </motion.div>
       </motion.div>

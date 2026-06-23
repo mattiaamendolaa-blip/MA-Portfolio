@@ -25,10 +25,10 @@ export function ThemeToggle() {
       type="button"
       aria-label="Cambia tema visivo"
       onClick={toggleTheme}
-      className="relative inline-flex h-10 w-[4.5rem] shrink-0 cursor-pointer items-center rounded-full border border-neutral-200/50 bg-white/40 p-1 text-neutral-700 shadow-[0_10px_24px_rgba(15,23,42,0.04),inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-xl transition-all duration-300 hover:bg-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/70 dark:border-white/10 dark:bg-neutral-900/40 dark:text-neutral-300 dark:shadow-[0_10px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.05)] dark:hover:bg-neutral-900/60"
+      className="relative inline-flex h-10 w-[4.5rem] shrink-0 cursor-pointer items-center rounded-full border border-neutral-300/60 bg-neutral-200/60 p-1 text-neutral-700 shadow-[inset_0_2px_5px_rgba(0,0,0,0.12),inset_0_1px_2px_rgba(0,0,0,0.08)] backdrop-blur-xl transition-all duration-300 hover:border-neutral-300/80 hover:bg-neutral-200/80 hover:shadow-[inset_0_2px_5px_rgba(0,0,0,0.16),inset_0_1px_2px_rgba(0,0,0,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/70 active:shadow-[inset_0_3px_6px_rgba(0,0,0,0.2)] dark:border-white/[0.08] dark:bg-neutral-900/60 dark:text-neutral-300 dark:shadow-[inset_0_2px_6px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(0,0,0,0.3)] dark:hover:border-white/[0.12] dark:hover:bg-neutral-900/70 dark:hover:shadow-[inset_0_2px_6px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(0,0,0,0.35)]"
     >
       <motion.span
-        className="absolute left-1 top-1 flex h-8 w-8 items-center justify-center rounded-full border border-black/[0.04] bg-white shadow-[0_4px_12px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,1)] dark:border-white/10 dark:bg-neutral-950 dark:shadow-[0_4px_12px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]"
+        className="absolute left-1 top-1 flex h-8 w-8 items-center justify-center rounded-full border border-white/80 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.1),0_1px_3px_rgba(0,0,0,0.06)] dark:border-white/[0.12] dark:bg-neutral-800 dark:shadow-[0_2px_8px_rgba(0,0,0,0.4),0_0_12px_rgba(52,211,153,0.08)]"
         animate={{ x: isDark ? 32 : 0 }}
         transition={{ type: "spring", stiffness: 380, damping: 26 }}
       >
@@ -42,9 +42,9 @@ export function ThemeToggle() {
             className="flex items-center justify-center transform-gpu"
           >
             {isDark ? (
-              <Moon className="h-4 w-4 text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.3)]" />
+              <Moon className="h-4 w-4 text-emerald-400 drop-shadow-[0_0_6px_rgba(52,211,153,0.4)]" />
             ) : (
-              <Sun className="h-4 w-4 text-amber-500 drop-shadow-[0_0_8px_rgba(245,158,11,0.2)]" />
+              <Sun className="h-4 w-4 text-amber-500 drop-shadow-[0_0_6px_rgba(245,158,11,0.3)]" />
             )}
           </motion.span>
         </AnimatePresence>

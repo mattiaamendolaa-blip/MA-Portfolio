@@ -40,7 +40,7 @@ export function Hero() {
             className="max-w-4xl font-[family:var(--font-display)] text-5xl font-extrabold tracking-[-0.06em] text-neutral-950 transition-colors duration-500 dark:text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]"
           >
             BLABLALBLABLAA{" "}
-            <span className="bg-gradient-to-r from-emerald-700 via-teal-600 to-blue-700 bg-clip-text text-transparent dark:from-emerald-200 dark:via-slate-200 dark:to-blue-300">
+            <span className="bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent dark:from-emerald-300 dark:to-blue-400">
               Qualcosa
             </span>
             .
@@ -48,7 +48,7 @@ export function Hero() {
 
           <motion.p
             variants={itemVariants}
-            className="mt-7 max-w-2xl text-lg leading-8 text-neutral-600 transition-colors duration-500 dark:text-neutral-400 md:text-xl"
+            className="mt-7 max-w-2xl text-lg leading-8 text-neutral-700 transition-colors duration-500 dark:text-neutral-300 md:text-xl"
           >
             Sono Mattia Amendola, full-stack developer. Progetto interfacce pulite e backend solidi
             per trasformare prodotti complessi in esperienze veloci, eleganti e facili da usare.
@@ -58,7 +58,7 @@ export function Hero() {
             <MagneticButton>
               <Link
                 href="mailto:mattiaa.mendolaa@gmail.com"
-                className="inline-flex items-center gap-2 rounded-full border border-emerald-300/35 bg-gradient-to-r from-emerald-500 to-sky-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-900/10 transition duration-300 hover:scale-[1.01] hover:shadow-xl hover:shadow-emerald-900/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 dark:border-white/10 dark:from-slate-100 dark:to-slate-300 dark:text-slate-950 dark:shadow-[0_0_24px_rgba(148,163,184,0.16)] dark:hover:shadow-[0_0_34px_rgba(148,163,184,0.22)]"
+                className="inline-flex items-center gap-2 rounded-full border border-white/[0.2] bg-gradient-to-r from-emerald-500 to-sky-600 px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(16,185,129,0.2),0_2px_8px_rgba(16,185,129,0.1),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_12px_32px_rgba(16,185,129,0.28),0_4px_12px_rgba(16,185,129,0.14),inset_0_1px_0_rgba(255,255,255,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 dark:border-white/[0.15] dark:from-emerald-500 dark:to-teal-400 dark:text-white dark:shadow-[0_8px_28px_rgba(52,211,153,0.22),0_2px_8px_rgba(52,211,153,0.1),inset_0_1px_0_rgba(255,255,255,0.2)] dark:hover:shadow-[0_12px_36px_rgba(52,211,153,0.32),0_4px_12px_rgba(52,211,153,0.15),inset_0_1px_0_rgba(255,255,255,0.25)]"
               >
                 Avviamo un progetto
                 <ArrowRight className="h-4 w-4" />
@@ -79,10 +79,10 @@ export function Hero() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-[1.75rem] border border-white/50 bg-white/65 px-5 py-5 shadow-[0_18px_40px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-2xl transition-all duration-300 ease-out dark:border-white/10 dark:bg-[#0f172a]/60 dark:shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] hover:dark:border-white/20 hover:dark:bg-[#1e293b]/60 hover:dark:shadow-[0_0_25px_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.15)] hover:-translate-y-1"
+                className="rounded-[1.75rem] border border-white/[0.35] bg-white/[0.5] px-5 py-5 shadow-[0_18px_40px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,0.85),inset_0_-1px_0_rgba(255,255,255,0.15)] backdrop-blur-[32px] backdrop-saturate-[1.7] transition-all duration-300 ease-out hover:bg-white/[0.6] hover:border-emerald-300/20 hover:shadow-[0_22px_48px_rgba(15,23,42,0.08),0_0_0_1px_rgba(52,211,153,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] hover:-translate-y-1 dark:border-white/[0.1] dark:bg-white/[0.04] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.08),inset_0_-1px_0_rgba(255,255,255,0.02)] dark:backdrop-saturate-[1.3] hover:dark:border-emerald-400/15 hover:dark:bg-white/[0.07] hover:dark:shadow-[0_12px_36px_rgba(0,0,0,0.5),0_0_16px_rgba(52,211,153,0.04),inset_0_1px_0_rgba(255,255,255,0.12)]"
               >
                 <p className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-white">{stat.value}</p>
-                <p className="mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">{stat.label}</p>
+                <p className="mt-1 text-sm leading-6 text-neutral-700 dark:text-neutral-300">{stat.label}</p>
               </div>
             ))}
           </motion.div>
