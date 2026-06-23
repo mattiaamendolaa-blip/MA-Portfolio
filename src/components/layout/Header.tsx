@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
@@ -25,13 +25,27 @@ export function Header() {
   const [hidden, setHidden] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const { scrollY } = useScroll();
+  const lastScrollY = useRef(0);
+  const scrollDelta = useRef(0);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? 0;
-    if (latest > 100 && latest > previous) {
-      setHidden(true);
-    } else {
+    const diff = latest - lastScrollY.current;
+    lastScrollY.current = latest;
+
+    if (latest < 80) {
       setHidden(false);
+      scrollDelta.current = 0;
+      return;
+    }
+
+    scrollDelta.current += diff;
+
+    if (scrollDelta.current > 40) {
+      setHidden(true);
+      scrollDelta.current = 0;
+    } else if (scrollDelta.current < -20) {
+      setHidden(false);
+      scrollDelta.current = 0;
     }
   });
 
@@ -70,7 +84,7 @@ export function Header() {
     <motion.header
       initial={{ opacity: 0, y: -26 }}
       animate={{ opacity: 1, y: hidden ? -100 : 0 }}
-      transition={{ duration: 0.35, ease: "easeInOut" }}
+      transition={{ type: "spring", stiffness: 260, damping: 28, mass: 0.8 }}
       className="fixed left-0 right-0 top-4 z-[100] px-4 md:top-6"
     >
       <div className="mx-auto flex w-[90%] max-w-4xl items-center justify-between rounded-[1.75rem] border border-white/[0.28] bg-white/[0.45] px-3 py-2.5 shadow-[0_8px_32px_rgba(15,23,42,0.06),0_1.5px_8px_rgba(15,23,42,0.03),inset_0_1px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(255,255,255,0.2)] backdrop-blur-[40px] backdrop-saturate-[1.8] transition-all duration-500 dark:border-white/[0.12] dark:bg-[#0f172a]/60 dark:shadow-[0_4px_30px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(255,255,255,0.03)] dark:backdrop-saturate-[1.4] sm:px-4 md:px-6 md:py-3">

@@ -75,10 +75,10 @@ export function Skills() {
   }, []);
 
   return (
-    <section id="skills" className="overflow-hidden py-20 md:py-28 relative scroll-mt-24">
+    <section id="skills" className="overflow-x-clip pt-20 pb-28 md:pt-28 md:pb-36 relative scroll-mt-24">
       <div className="mx-auto max-w-8xl px-4 relative">
         <div className="mx-auto mb-10 max-w-2xl text-center">
-          <h2 className="mt-3 font-[family:var(--font-display)] text-3xl font-bold tracking-[-0.04em] text-neutral-950 dark:text-white md:text-4xl">
+          <h2 className="mt-3 font-[family:var(--font-display)] text-3xl font-bold tracking-[-0.04em] text-neutral-950 dark:text-white md:text-4xl text-balance">
             Le mie Skills
           </h2>
         </div>

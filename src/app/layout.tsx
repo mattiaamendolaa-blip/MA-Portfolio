@@ -2,8 +2,10 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { LanguageProvider } from "@/Context/LanguageContext";
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Space_Grotesk, Geist } from "next/font/google";
 import "./globals.css";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-display" });
@@ -60,13 +62,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="it" suppressHydrationWarning className="scroll-smooth">
+    <html lang="it" suppressHydrationWarning className={cn("scroll-smooth", "font-sans", geist.variable)}>
       <body
         className={cn(
           inter.className,
           inter.variable,
           spaceGrotesk.variable,
-          "min-h-screen bg-[hsl(210_20%_98%)] text-neutral-900 antialiased transition-colors duration-500 dark:bg-[hsl(226_63%_6%)] dark:text-neutral-50",
+          "min-h-dvh bg-[hsl(210_20%_98%)] text-neutral-900 antialiased transition-colors duration-500 dark:bg-[hsl(226_63%_6%)] dark:text-neutral-50",
         )}
       >
         <a
