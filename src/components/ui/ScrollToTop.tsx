@@ -31,7 +31,7 @@ export function ScrollToTop() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 10, scale: 0.9 }}
           transition={{ type: "spring", stiffness: 300, damping: 24 }}
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-2"
+          className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom,1.5rem))] right-4 sm:right-6 z-50 flex items-center gap-2"
         >
           <AnimatePresence>
             {hovered && (

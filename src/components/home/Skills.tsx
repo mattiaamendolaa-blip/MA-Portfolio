@@ -55,7 +55,6 @@ const skills: Skill[] = [
 
 export function Skills() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  
   const mouseX = useMotionValue(Infinity);
 
   useEffect(() => {
@@ -94,7 +93,6 @@ export function Skills() {
           ))}
         </motion.div>
 
-        {/* MODIFICATO SOLO: md:hidden -> xl:hidden */}
         <div
           ref={scrollRef}
           className="w-full overflow-x-auto pb-4 scroll-smooth [&::-webkit-scrollbar]:hidden xl:hidden"
@@ -104,8 +102,8 @@ export function Skills() {
               const Icon = skill.icon;
               return (
                 <div key={`${skill.name}-${index}`} className="flex min-w-[70px] flex-col items-center gap-2">
-                  <div className="rounded-2xl border border-white/[0.3] bg-white/[0.6] p-3 shadow-[0_4px_16px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-xl dark:border-white/[0.1] dark:bg-white/[0.06] dark:shadow-[0_4px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)]">
-                    <Icon className={cn("h-8 w-8 transition-colors", skill.color)} />
+                  <div className="rounded-2xl border border-neutral-200/60 bg-white p-3 shadow-[0_4px_16px_rgba(0,0,0,0.04)] dark:border-white/[0.08] dark:bg-neutral-900/60 dark:shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+                    <Icon className={cn("h-8 w-8", skill.color)} />
                   </div>
                   <span className="text-center text-[10px] font-medium text-neutral-700 dark:text-neutral-300">
                     {skill.name}

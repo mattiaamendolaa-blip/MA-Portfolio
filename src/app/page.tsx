@@ -3,11 +3,13 @@
 import { useState, useEffect, useCallback } from "react";
 import { Hero } from "@/components/home/Hero";
 import { Skills } from "@/components/home/Skills";
+import { Contact } from "@/components/home/Contact";
 import { Header } from "@/components/layout/Header";
 import { MeshBackground } from "@/components/ui/MeshBackground";
 import { SpotlightCard } from "@/components/ui/Spotlightcard";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 import {
   ArrowUpRight,
   Terminal as TerminalIcon,
@@ -100,7 +102,12 @@ export default function Home() {
   }, [activeTab]);
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+    >
+      <CustomCursor />
       <ScrollProgress />
       <Header />
       <main id="main-content" className="relative flex min-h-dvh flex-col antialiased subpixel-antialiased w-full overflow-x-hidden">
@@ -112,7 +119,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_90%_60%,rgba(59,130,246,0.08),transparent_55%)] dark:bg-[radial-gradient(ellipse_50%_40%_at_90%_60%,rgba(59,130,246,0.03),transparent_55%)] pointer-events-none" />
 
           <div className="mx-auto max-w-6xl w-full">
-            <div className="mb-24 max-w-2xl">
+            <div className="mb-12 md:mb-24 max-w-2xl">
               <span className="block w-10 h-0.5 rounded-full bg-emerald-500 dark:bg-emerald-400 mb-4" aria-hidden="true" />
               <h2 className="font-[family:var(--font-display)] text-4xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-5xl text-balance">
                 I miei progetti
@@ -122,14 +129,14 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex flex-col gap-40 md:gap-52">
+            <div className="flex flex-col gap-8">
 
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16"
+                transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                className="sticky top-24 z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16 rounded-3xl bg-[hsl(210_20%_98%)] dark:bg-[hsl(226_63%_6%)] p-6 md:p-8 -mx-6 md:-mx-8"
               >
                 <motion.div
                   initial="hidden"
@@ -139,7 +146,7 @@ export default function Home() {
                   className="w-full lg:w-[45%] flex flex-col justify-between space-y-6"
                 >
                   <div className="space-y-4">
-                    <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="flex items-center gap-3">
+                    <motion.div variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.23, 1, 0.32, 1] as const } } }} className="flex items-center gap-3">
                       <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/[0.12] border border-emerald-500/[0.15] dark:border-emerald-400/[0.12] px-2.5 py-1 rounded-lg backdrop-blur-sm shadow-[inset_0_1px_0_rgba(52,211,153,0.1)]">
                         Progetto 01
                       </span>
@@ -148,11 +155,11 @@ export default function Home() {
                       </span>
                     </motion.div>
 
-                    <motion.h3 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 leading-tight text-balance">
+                    <motion.h3 variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.23, 1, 0.32, 1] as const } } }} className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 leading-tight text-balance">
                       Ecosistema IoT Cloud di Videosorveglianza per la Scuola
                     </motion.h3>
 
-                    <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="text-sm sm:text-base leading-relaxed text-neutral-700 dark:text-neutral-300 font-normal">
+                    <motion.p variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.23, 1, 0.32, 1] as const } } }} className="text-sm sm:text-base leading-relaxed text-neutral-700 dark:text-neutral-300 font-normal max-w-[65ch]">
                       Infrastruttura IoT end-to-end per flussi video real-time 720p. Ottimizzazione a basso livello
                       in Assembly x86 per massimizzare il throughput dei buffer di memoria su nodi edge (Raspberry Pi),
                       con orchestrazione cloud in Python e cifratura dei dati.
@@ -161,7 +168,7 @@ export default function Home() {
                       </span>
                     </motion.p>
 
-                    <motion.ul variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="text-xs text-neutral-600 dark:text-neutral-300 space-y-2.5 list-none pl-1 font-medium">
+                    <motion.ul variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.23, 1, 0.32, 1] as const } } }} className="text-xs text-neutral-600 dark:text-neutral-300 space-y-2.5 list-none pl-1 font-medium">
                       <li className="flex items-start gap-2">
                         <Check className="h-3.5 w-3.5 text-emerald-500 mt-0.5 shrink-0" /> Ingegnerizzazione Case CAD & Stampa 3D per dissipatione termica.
                       </li>
@@ -174,7 +181,7 @@ export default function Home() {
                     </motion.ul>
                   </div>
 
-                  <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="space-y-4 pt-2">
+                  <motion.div variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.23, 1, 0.32, 1] as const } } }} className="space-y-4 pt-2">
                     <div className="flex flex-wrap gap-1.5">
                       {["Assembly x86", "Python", "Raspberry Pi", "AutoCAD", "Linux Embedded"].map((tech) => (
                         <span key={tech} className="rounded-full border border-neutral-200/70 bg-neutral-50 px-2.5 py-0.5 text-xs font-medium text-neutral-600 dark:border-white/[0.08] dark:bg-neutral-800/50 dark:text-neutral-300">
@@ -185,7 +192,13 @@ export default function Home() {
                   </motion.div>
                 </motion.div>
 
-                <div className="w-full lg:w-[55%] relative group/canvas">
+                <motion.div
+                  initial={{ clipPath: "inset(0 0 8% 0)", opacity: 0.6 }}
+                  whileInView={{ clipPath: "inset(0 0 0% 0)", opacity: 1 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+                  className="w-full lg:w-[55%] relative group/canvas"
+                >
                   <div className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/10 to-transparent rounded-3xl blur-2xl opacity-0 group-hover/canvas:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                   <SpotlightCard className="w-full overflow-hidden rounded-2xl border border-neutral-200/80 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.4)] backdrop-blur-md bg-white/40 dark:bg-neutral-900/40 p-4">
@@ -355,17 +368,23 @@ export default function Home() {
                       </AnimatePresence>
                     </div>
                   </SpotlightCard>
-                </div>
+                </motion.div>
               </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16"
+                transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                className="sticky top-24 z-20 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16 rounded-3xl bg-[hsl(210_20%_98%)] dark:bg-[hsl(226_63%_6%)] p-6 md:p-8 -mx-6 md:-mx-8"
               >
-                <div className="w-full lg:w-[55%] relative group/canvas">
+                <motion.div
+                  initial={{ clipPath: "inset(0 0 8% 0)", opacity: 0.6 }}
+                  whileInView={{ clipPath: "inset(0 0 0% 0)", opacity: 1 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+                  className="w-full lg:w-[55%] relative group/canvas"
+                >
                   <div className="absolute -inset-4 bg-gradient-to-tl from-blue-500/10 to-transparent rounded-3xl blur-2xl opacity-0 group-hover/canvas:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                   <SpotlightCard className="w-full overflow-hidden rounded-2xl border border-neutral-200/80 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.4)] backdrop-blur-md bg-white/40 dark:bg-neutral-900/40 p-5 min-h-[420px] sm:min-h-[460px] flex flex-col justify-center items-center relative">
@@ -377,7 +396,7 @@ export default function Home() {
                         <button
                           type="button"
                           onClick={() => setNfcState("tapping")}
-                          className="w-full max-w-[250px] aspect-[1.8/1] bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-2xl border border-white/15 shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex flex-col justify-between p-4 text-left transition-all duration-300 hover:scale-[1.03] hover:border-blue-500/40 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_20px_rgba(59,130,246,0.1)] active:scale-95 group/card cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                          className="w-full max-w-[250px] aspect-[1.8/1] bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-2xl border border-white/15 shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex flex-col justify-between p-4 text-left transition-[transform,border-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:scale-[1.03] hover:border-blue-500/40 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_20px_rgba(59,130,246,0.1)] active:scale-[0.97] group/card cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent [perspective:600px] hover:[transform:rotateX(2deg)_rotateY(-2deg)_scale(1.03)]"
                         >
                           <div>
                             <p className="text-sm font-bold text-white font-sans tracking-tight">Amendola Mattia</p>
@@ -401,7 +420,7 @@ export default function Home() {
                             scale: [0.2, 1, 2.2],
                             opacity: [0, 0.8, 0],
                           }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                          transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
                           className="absolute w-32 h-32 border-2 border-blue-500/50 rounded-full"
                         />
 
@@ -474,7 +493,7 @@ export default function Home() {
                       </div>
                     )}
                   </SpotlightCard>
-                </div>
+                </motion.div>
 
                 <div className="w-full lg:w-[45%] flex flex-col justify-between space-y-6">
                   <div className="space-y-4">
@@ -491,7 +510,7 @@ export default function Home() {
                       Biglietto da Visita con card NFC 215
                     </h3>
 
-                    <p className="text-sm sm:text-base leading-relaxed text-neutral-700 dark:text-neutral-300 font-normal">
+                    <p className="text-sm sm:text-base leading-relaxed text-neutral-700 dark:text-neutral-300 font-normal max-w-[65ch]">
                       Ecosistema hardware-software per lo scambio di contatti. Sviluppo di una web-app ultra-leggera ottimizzata per il caricamento istantaneo all'atto del "Tap" con una card NFC fisica.
                       <span className="block mt-3 p-3 bg-neutral-50 dark:bg-neutral-800/30 border border-neutral-200/50 dark:border-white/[0.06] rounded-xl text-xs italic text-neutral-600 dark:text-neutral-300">
                         "L'idea mi è venuta pensando ai bigliettini da visita tradizionali (di cui io facevo collezione): mi ha sempre affascinato il gesto di riceverlo e vedere quanto fossero intriganti i loro stili. Ho creato una versione digitale per condividere tutto con un simple gesto, senza app. Le mie keyword? Semplice ed accessibile."
@@ -572,18 +591,21 @@ export default function Home() {
         </div>
 
         <Skills />
+
+        <Contact />
       </main>
-      <footer className="relative w-full border-t border-neutral-200/50 dark:border-white/[0.06] bg-[hsl(210_20%_98%)] dark:bg-[hsl(226_63%_6%)] py-10">
-        <div className="mx-auto max-w-6xl px-6 flex flex-col items-center gap-3">
-          <p className="text-sm text-neutral-600 dark:text-neutral-300">
-            &copy; {new Date().getFullYear()} Amendola Mattia. Tutti i diritti riservati.
-          </p>
+      <footer className="relative w-full border-t border-neutral-200/50 dark:border-white/[0.06] bg-[hsl(210_20%_98%)] dark:bg-[hsl(226_63%_6%)] py-10 pb-[max(2.5rem,env(safe-area-inset-bottom))]">
+        <div className="mx-auto max-w-6xl px-6 flex flex-col items-center gap-3 text-center md:flex-row md:justify-between md:text-left">
+          <div>
+            <p className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">Mattia Amendola</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">Full-stack developer</p>
+          </div>
           <p className="text-xs text-neutral-500 dark:text-neutral-400">
-            Progettato e sviluppato con attenzione al dettaglio.
+            &copy; {new Date().getFullYear()} Tutti i diritti riservati.
           </p>
         </div>
       </footer>
       <ScrollToTop />
-    </>
+    </motion.div>
   );
 }

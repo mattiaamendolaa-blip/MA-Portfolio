@@ -34,3 +34,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# Come avviare il portfolio in locale 
+
+Scaricare la cartella, aprirla nel prorpio IDE (VS consigliato), aprire il terminale e cambiare la directory su  /portfolioma, fatto ciò avviare usando il comando npm run dev aspettira che si avvii e se tutto viene compilato correttamente arriverà la notifica dal server con il codice 200 e l'url per aprirlo in locale(potrebbe essere localhost sulla porta 3000)
